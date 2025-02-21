@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: red;
+            color: #00B0B9;
+        }
+
+        #countdown {
+            font-size: 2em;
+            font-weight: bold;
+        }
+    </style>
+    <title>WIBF?</title>
+</head>
+<body>
+<h1>¿WIBF?</h1>
+<h2>Who knows....</h2>
+<div id="countdown"></div>
+<div id="gif" style="height: 20vh"></div>
+
+<script>
+    //Global variables
+    const targetDate = new Date("February 25, 2025 14:00:00 UTC+1").getTime();
+
+</script>
+
+<script>
+    //Countdown Script
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const timeRemaining = targetDate - now;
+
+        if (timeRemaining <= 0) {
+            clearInterval(timerInterval)
+            document.getElementById("countdown").innerHTML = "That's the moment. Are you feeling the tension here?";
+            displayMeetingGif()
+        } else {
+            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+            document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+    }
+
+    const timerInterval = setInterval(updateCountdown, 1000);
+    updateCountdown();
+</script>
+<script>
+    //Gif selection script
+    const waitingGifs = ['https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExeXo5eTQzMTEzNWlzOXltZ3gzNnB6bjZyZjF5am9iOXlkNDRyYzhqaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0HlBO7eyXzSZkJri/giphy.gif',
+        'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcnM2cnFteTZ6aDNuajIxN2JuZ2pkaW9yamFsNG5hY3lmMHVlanZzcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QPQ3xlJhqR1BXl89RG/giphy.gif',
+        'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExemNzMnBuMXZ0MjM5cjM2dTdyNGN5amdpNHFndmVid2tteGpoaXpydyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QhjR3MG9ZFfjB6BtIZ/giphy.gif',
+        'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcTRhYndtdnJpamUycWE4cjdvYzZ1MzczbG56em9zcDg1cHAybHVhayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5xuE75slgj1n3Wvxhs/giphy.gif',
+        'https://media.giphy.com/media/tXL4FHPSnVJ0A/giphy.gif?cid=ecf05e47jvcpxd0m38b37pz38n9dql7x4f80qbvvzmhb39yp&ep=v1_gifs_related&rid=giphy.gif&ct=g',
+        'https://media.giphy.com/media/SWVzkIlHdEckF81gnA/giphy.gif?cid=ecf05e4716aa1t250daegdi53enajelvbvq90vg602fkt7v4&ep=v1_gifs_related&rid=giphy.gif&ct=g',
+        'https://media.giphy.com/media/RjvD4HTwDo8Ni/giphy.gif?cid=ecf05e4716aa1t250daegdi53enajelvbvq90vg602fkt7v4&ep=v1_gifs_related&rid=giphy.gif&ct=g',
+        'https://media.giphy.com/media/8MBYvsjFsmNIagY1yK/giphy.gif?cid=ecf05e4716aa1t250daegdi53enajelvbvq90vg602fkt7v4&ep=v1_gifs_related&rid=giphy.gif&ct=g',
+        'https://media.giphy.com/media/2uwZ4xi75JhxZYeyQB/giphy.gif?cid=ecf05e4716aa1t250daegdi53enajelvbvq90vg602fkt7v4&ep=v1_gifs_related&rid=giphy.gif&ct=g',
+        'https://media.giphy.com/media/GiWEowj3nQv9C/giphy.gif?cid=ecf05e471ooae02nee4nmwzpcobik1qlnnwslyej234khjr2&ep=v1_gifs_search&rid=giphy.gif&ct=g',
+        'https://media.giphy.com/media/BrhUX5p0RoDkY/giphy.gif?cid=790b7611rf6gq378ljy2dbn7hofig15hxgp9kbipg7i3x7e7&ep=v1_gifs_search&rid=giphy.gif&ct=g',
+        'https://media.giphy.com/media/oNmO06JNhnNtGk08Nr/giphy.gif?cid=ecf05e47eeppx6f5r4gmwhrkggdsk8vssvctbluj4uj58a92&ep=v1_gifs_search&rid=giphy.gif&ct=g',
+        'https://media.giphy.com/media/xT9KVmINRKGsIzd0YM/giphy.gif?cid=ecf05e477qlsdf7cwbym2qhraiv4zucemqjx27ein8k0ksbw&ep=v1_gifs_search&rid=giphy.gif&ct=g',
+        'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWlueG1mbWR6OXQyNTlzOGs1N2VpM3V4dDhtbWliZmM1emloeGY0ZyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l2JhpjWPccQhsAMfu/giphy.gif'
+    ]
+    const meetingGifs = ['https://media.giphy.com/media/sKWlakDl8fOr24CFcq/giphy.gif?cid=ecf05e4716aa1t250daegdi53enajelvbvq90vg602fkt7v4&ep=v1_gifs_related&rid=giphy.gif&ct=g',
+        'https://media.giphy.com/media/mR0COiiEI64NK8qkp5/giphy.gif?cid=ecf05e4755p16gxbg0tfp2z2lwe35nhlmbn2thhd3s4pc0xp&ep=v1_gifs_search&rid=giphy.gif&ct=g',
+        'https://media.giphy.com/media/QumnfihD4ibhRUqGcH/giphy.gif?cid=790b76116w8ai9k5kswzlrc7esfbofxt2uv3315lsr1lbu7i&ep=v1_gifs_search&rid=giphy.gif&ct=g']
+    const gifElt = document.getElementById("gif")
+
+    function displayMeetingGif() {
+        let gifSelected = meetingGifs[Math.floor(Math.random() * meetingGifs.length)];
+        console.log("Gif selected", gifSelected)
+        document.getElementById("gif").innerHTML = '<img src="' + gifSelected + '"/>'
+    }
+
+    if (targetDate - new Date().getTime() > 0) {
+        let gifSelected = waitingGifs[Math.floor(Math.random() * waitingGifs.length)];
+        console.log("Gif selected", gifSelected)
+        document.getElementById("gif").innerHTML = '<img src="' + gifSelected + '"/>'
+    } else {
+        displayMeetingGif()
+    }
+</script>
+</body>
+</html>
